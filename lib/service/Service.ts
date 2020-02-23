@@ -32,9 +32,11 @@ type XudInfo = {
   version: string;
   nodePubKey: string;
   uris: string[];
+  network: string;
+  alias: string;
   numPeers: number;
   numPairs: number;
-  orders: { peer: number, own: number};
+  orders: { peer: number, own: number };
   lnd: Map<string, LndInfo>;
   raiden?: RaidenInfo;
   pendingSwapHashes: string[];
@@ -252,6 +254,8 @@ class Service {
 
     let peerOrdersCount = 0;
     let ownOrdersCount = 0;
+    const network = this.pool.getNetwork();
+
     let numPairs = 0;
     for (const pairId of this.orderBook.pairIds) {
       const peerOrders = this.orderBook.getPeersOrders(pairId);
@@ -271,6 +275,8 @@ class Service {
       nodePubKey,
       uris,
       numPairs,
+      network,
+      alias: '',
       version: `${this.version}${commitHash}`,
       numPeers: this.pool.peerCount,
       orders: {

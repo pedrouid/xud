@@ -543,6 +543,12 @@ export class GetInfoResponse extends jspb.Message {
     getRaiden(): RaidenInfo | undefined;
     setRaiden(value?: RaidenInfo): void;
 
+    getAlias(): string;
+    setAlias(value: string): void;
+
+    getNetwork(): string;
+    setNetwork(value: string): void;
+
     clearPendingSwapHashesList(): void;
     getPendingSwapHashesList(): Array<string>;
     setPendingSwapHashesList(value: Array<string>): void;
@@ -570,6 +576,8 @@ export namespace GetInfoResponse {
 
         lndMap: Array<[string, LndInfo.AsObject]>,
         raiden?: RaidenInfo.AsObject,
+        alias: string,
+        network: string,
         pendingSwapHashesList: Array<string>,
     }
 }

@@ -397,6 +397,8 @@ class GrpcService {
       response.setNumPairs(getInfoResponse.numPairs);
       response.setNumPeers(getInfoResponse.numPeers);
       response.setVersion(getInfoResponse.version);
+      response.setAlias(getInfoResponse.alias);
+      response.setNetwork(getInfoResponse.network);
 
       const getLndInfo = ((lndInfo: LndInfo): xudrpc.LndInfo => {
         const lnd = new xudrpc.LndInfo();
